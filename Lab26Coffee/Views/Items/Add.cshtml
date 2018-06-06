@@ -1,0 +1,33 @@
+﻿@using Lab26Coffee.Models
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Cart</h2>
+
+Cart:
+<ul>
+    @foreach (Item i in (List<Item>)(Session["Cart"]))
+    {
+        <li>@i.Name by @i.Price</li>
+
+
+    }
+</ul>
+@*<ul>
+    @foreach (Item i in (List<Item>)(Session["Cart"]))
+        {
+            double total = 0;
+            total += Convert.ToDouble(i.Price);
+            <li>Total: @total</li>
+        }
+
+    </ul>*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
